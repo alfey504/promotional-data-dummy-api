@@ -7,7 +7,7 @@ var maxFulfillmentPage int
 const fulfillmentPageDataLimit = 1000
 
 func GetFulfillmentHistory(page int) []models.FulfillmentHistory {
-	maxCount := len(sales)
+	maxCount := len(fulfillment_history)
 	pageStart := fulfillmentPageDataLimit * (page - 1)
 	pageEnd := pageStart + fulfillmentPageDataLimit
 	if pageEnd > maxCount {
