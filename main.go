@@ -8,13 +8,22 @@ import (
 )
 
 func main() {
+	setServer()
+}
 
+func setServer() {
 	router := gin.Default()
+
+	// err := router.SetTrustedProxies([]string{"192.168.220.33"})
+	// if err != nil {
+	// 	panic(err)
+	// }
 
 	v1 := router.Group("/api/v1")
 	{
 		v1.GET("/products", controllers.GetProductController)
-		v1.GET("/sku", controllers.GetSKUController)
+		v1.GET("/skus", controllers.GetSKUController)
+		v1.GET("/customers", controllers.GetCustomersController)
 	}
 
 	if err := router.Run(":8080"); err != nil {
