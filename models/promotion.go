@@ -9,8 +9,8 @@ type Promotion struct {
 	PromotionName        string            `json:"promotion_name"`
 	PromotionDescription string            `json:"promotion_description"`
 	PromotionType        string            `json:"promotion_type"`
-	TargetBundles        []int             `json:"target_bundles"`
-	TargetSKUs           []int             `json:"target_skus"`
+	TargetBundleIDs      []int             `json:"target_bundle_ids"`
+	TargetSKUIDs         []int             `json:"target_sku_ids"`
 	DiscountPercent      int               `json:"discount_percent"`
 	StartDate            custom_types.Date `json:"start_date"`
 	EndDate              custom_types.Date `json:"end_date"`

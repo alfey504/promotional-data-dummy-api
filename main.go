@@ -32,6 +32,7 @@ func setServer() {
 		v1.GET("/bundles", controllers.GetBundlesController)
 		v1.GET("/promotions", controllers.GetPromotionControllers)
 		v1.GET("/sales", controllers.GetSalesController)
+		v1.GET("/fulfillment-history", controllers.GetFulfillmentController)
 	}
 
 	if err := router.Run(":8080"); err != nil {

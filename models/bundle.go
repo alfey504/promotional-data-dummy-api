@@ -5,5 +5,5 @@ type Bundle struct {
 	BundleName        string  `json:"bundle_name"`
 	BundleDescription string  `json:"bundle_description"`
 	BundlePrice       float64 `json:"bundle_price"`
-	SKUs              []int   `json:"skus"`
+	SKUIDs            []int   `json:"sku_ids"`
 }

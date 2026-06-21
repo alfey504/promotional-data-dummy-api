@@ -11,6 +11,7 @@ const CUSTOMER_REPO_PATH = "data\\customers.json"
 const BUNDLES_REPO_PATH = "data\\bundles.json"
 const PROMOTION_REPO_PATH = "data\\promotions.json"
 const SALES_REPO_PATH = "data\\sales.json"
+const FULFILLMENT_REPO_PATH = "data\\fulfillment_history.json"
 
 var products = []models.Product{}
 var skus = []models.SKU{}
@@ -18,6 +19,7 @@ var customers = []models.Customer{}
 var bundles = []models.Bundle{}
 var promotions = []models.Promotion{}
 var sales = []models.Sale{}
+var fulfillment_history = []models.FulfillmentHistory{}
 
 func LoadData() error {
 	if err := utils.DecodeJSON(PRODUCT_REPO_PATH, &products); err != nil {
@@ -44,6 +46,14 @@ func LoadData() error {
 		return err
 	}
 
+	maxSalesPages = findMaxSalePages()
+
+	if err := utils.DecodeJSON(FULFILLMENT_REPO_PATH, &fulfillment_history); err != nil {
+		return err
+	}
+
+	maxFulfillmentPage = findMaxFulfillmentPages()
+
 	return nil
 }
 
@@ -65,26 +75,4 @@ func GetBundles() []models.Bundle {
 
 func GetPromotion() []models.Promotion {
 	return promotions
-}
-
-func GetSales(page int) []models.Sale {
-	pageDataLimit := 1000
-	maxCount := len(sales) //25282
-
-	pageStart := pageDataLimit * (page - 1)
-	pageEnd := pageStart + pageDataLimit
-	if pageEnd > maxCount {
-		pageEnd = maxCount
-	}
-	return sales[pageStart:pageEnd]
-}
-
-func GetMaxSalesPages() int {
-	maxCount := len(sales)
-	pageDataLimit := 1000
-	pageCount := maxCount / pageDataLimit
-	if pageCount%pageDataLimit > 0 {
-		pageCount++
-	}
-	return pageCount
 }
