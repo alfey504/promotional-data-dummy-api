@@ -39,8 +39,8 @@ func GetBundles() ([]models.Bundle, error) {
 		target_sku_count := utils.RandomIntBetween(2, 6)
 		bundle := models.Bundle{
 			BundleID:          i,
-			BundleName:        bundleNames[utils.RandomIntBetween(0, len(bundleNames))],
-			BundleDescription: bundleDescriptions[utils.RandomIntBetween(0, len(bundleDescriptions))],
+			BundleName:        bundleNames[utils.RandomIntBetween(0, len(bundleNames)-1)],
+			BundleDescription: bundleDescriptions[utils.RandomIntBetween(0, len(bundleDescriptions)-1)],
 			BundlePrice:       float64(utils.RandomIntBetween(10, 30)) * float64(target_sku_count),
 			SKUs:              utils.SampleRandInt(1, 165, target_sku_count),
 		}
