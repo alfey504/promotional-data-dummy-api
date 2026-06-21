@@ -4,10 +4,15 @@ import (
 	"fmt"
 
 	"dummyretaildata.com/dummydataserver/controllers"
+	"dummyretaildata.com/dummydataserver/repository"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	if err := repository.LoadData(); err != nil {
+		panic(err)
+	}
+
 	setServer()
 }
 

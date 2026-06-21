@@ -5,7 +5,7 @@ import (
 	"dummyretaildata.com/dummydataserver/utils"
 )
 
-const PRODUCT_REPO_PATH = "new_data\\products.json"
+const PRODUCT_REPO_PATH = "data\\products.json"
 const SKU_REPO_PATH = "data\\skus.json"
 const CUSTOMER_REPO_PATH = "data\\customers.json"
 const BUNDLES_REPO_PATH = "data\\bundles.json"
@@ -67,6 +67,24 @@ func GetPromotion() []models.Promotion {
 	return promotions
 }
 
-func GetSales() []models.Sale {
-	return sales
+func GetSales(page int) []models.Sale {
+	pageDataLimit := 1000
+	maxCount := len(sales) //25282
+
+	pageStart := pageDataLimit * (page - 1)
+	pageEnd := pageStart + pageDataLimit
+	if pageEnd > maxCount {
+		pageEnd = maxCount
+	}
+	return sales[pageStart:pageEnd]
+}
+
+func GetMaxSalesPages() int {
+	maxCount := len(sales)
+	pageDataLimit := 1000
+	pageCount := maxCount / pageDataLimit
+	if pageCount%pageDataLimit > 0 {
+		pageCount++
+	}
+	return pageCount
 }
