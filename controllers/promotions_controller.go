@@ -9,16 +9,7 @@ import (
 )
 
 func GetPromotionControllers(c *gin.Context) {
-	promotions, err := repository.GetPromotion()
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, models.APIRespone[any]{
-			Status:  http.StatusInternalServerError,
-			Message: "There was an internal server issue while fetching your data",
-			Data:    nil,
-		})
-		c.Abort()
-		return
-	}
+	promotions := repository.GetPromotion()
 	c.JSON(http.StatusOK, models.APIRespone[[]models.Promotion]{
 		Status:  http.StatusOK,
 		Message: "Success",

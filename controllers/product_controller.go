@@ -9,17 +9,7 @@ import (
 )
 
 func GetProductController(c *gin.Context) {
-	products, err := repository.GetProducts()
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, models.APIRespone[any]{
-			Status:  http.StatusInternalServerError,
-			Message: "There was an internal server issue while fetching your data",
-			Data:    nil,
-		})
-		c.Abort()
-		return
-	}
-
+	products := repository.GetProducts()
 	c.JSON(http.StatusOK, models.APIRespone[[]models.Product]{
 		Status:  http.StatusOK,
 		Message: "Success",

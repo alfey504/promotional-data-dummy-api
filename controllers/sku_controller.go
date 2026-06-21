@@ -9,17 +9,7 @@ import (
 )
 
 func GetSKUController(c *gin.Context) {
-	skus, err := repository.GetSkus()
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, models.APIRespone[any]{
-			Status:  http.StatusInternalServerError,
-			Message: "There was an internal server error while fetching your data",
-			Data:    nil,
-		})
-		c.Abort()
-		return
-	}
-
+	skus := repository.GetSkus()
 	c.JSON(http.StatusOK, models.APIRespone[[]models.SKU]{
 		Status:  http.StatusOK,
 		Message: "Success",

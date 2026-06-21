@@ -9,17 +9,7 @@ import (
 )
 
 func GetCustomersController(c *gin.Context) {
-	customers, err := repository.GetCustomers()
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, models.APIRespone[any]{
-			Status:  http.StatusInternalServerError,
-			Message: "There was an internal server issue while fetching your data",
-			Data:    nil,
-		})
-		c.Abort()
-		return
-	}
-
+	customers := repository.GetCustomers()
 	c.JSON(http.StatusOK, models.APIRespone[[]models.Customer]{
 		Status:  http.StatusOK,
 		Message: "Success",
