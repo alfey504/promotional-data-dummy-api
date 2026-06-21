@@ -7,8 +7,8 @@ import (
 
 const SKU_REPO_PATH = "data\\skus.json"
 
-func GetSkus() ([]models.Sku, error) {
-	skus := []models.Sku{}
+func GetSkus() ([]models.SKU, error) {
+	skus := []models.SKU{}
 	if err := utils.DecodeJSON(SKU_REPO_PATH, &skus); err != nil {
 		return nil, err
 	}
