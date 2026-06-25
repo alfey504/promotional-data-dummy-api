@@ -5,13 +5,13 @@ import (
 	"dummyretaildata.com/dummydataserver/utils"
 )
 
-const PRODUCT_REPO_PATH = "data\\products.json"
-const SKU_REPO_PATH = "data\\skus.json"
-const CUSTOMER_REPO_PATH = "data\\customers.json"
-const BUNDLES_REPO_PATH = "data\\bundles.json"
-const PROMOTION_REPO_PATH = "data\\promotions.json"
-const SALES_REPO_PATH = "data\\sales.json"
-const FULFILLMENT_REPO_PATH = "data\\fulfillment_history.json"
+const PRODUCT_REPO_PATH = "data/products.json"
+const SKU_REPO_PATH = "data/skus.json"
+const CUSTOMER_REPO_PATH = "data/customers.json"
+const BUNDLES_REPO_PATH = "data/bundles.json"
+const PROMOTION_REPO_PATH = "data/promotions.json"
+const SALES_REPO_PATH = "data/sales.json"
+const FULFILLMENT_REPO_PATH = "data/fulfillment_history.json"
 
 var products = []models.Product{}
 var skus = []models.SKU{}
