@@ -8,18 +8,16 @@ import (
 const PRODUCT_REPO_PATH = "data/products.json"
 const SKU_REPO_PATH = "data/skus.json"
 const CUSTOMER_REPO_PATH = "data/customers.json"
-const BUNDLES_REPO_PATH = "data/bundles.json"
 const PROMOTION_REPO_PATH = "data/promotions.json"
 const SALES_REPO_PATH = "data/sales.json"
 const FULFILLMENT_REPO_PATH = "data/fulfillment_history.json"
 
 var products = []models.Product{}
-var skus = []models.SKU{}
+var skus = []models.Sku{}
 var customers = []models.Customer{}
-var bundles = []models.Bundle{}
 var promotions = []models.Promotion{}
 var sales = []models.Sale{}
-var fulfillment_history = []models.FulfillmentHistory{}
+var fulfillment_history = []models.FullfillmentHistory{}
 
 func LoadData() error {
 	if err := utils.DecodeJSON(PRODUCT_REPO_PATH, &products); err != nil {
@@ -31,10 +29,6 @@ func LoadData() error {
 	}
 
 	if err := utils.DecodeJSON(CUSTOMER_REPO_PATH, &customers); err != nil {
-		return err
-	}
-
-	if err := utils.DecodeJSON(BUNDLES_REPO_PATH, &bundles); err != nil {
 		return err
 	}
 
@@ -61,16 +55,12 @@ func GetProducts() []models.Product {
 	return products
 }
 
-func GetSkus() []models.SKU {
+func GetSkus() []models.Sku {
 	return skus
 }
 
 func GetCustomers() []models.Customer {
 	return customers
-}
-
-func GetBundles() []models.Bundle {
-	return bundles
 }
 
 func GetPromotion() []models.Promotion {

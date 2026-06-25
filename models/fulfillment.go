@@ -1,12 +1,10 @@
 package models
 
-import (
-	"dummyretaildata.com/dummydataserver/custom_types"
-)
+import "dummyretaildata.com/dummydataserver/custom_types"
 
-type FulfillmentHistory struct {
-	FulfillmentID    int               `json:"fulfillment_id"`
-	SKUID            int               `json:"sku_id"`
-	FulfillmentDate  custom_types.Date `json:"fulfillment_date"`
+type FullfillmentHistory struct {
+	FullfillmentID   int               `json:"fullfillment_id"`
+	SkuID            int               `json:"sku_id"`
+	FullfillmentDate custom_types.Date `json:"fullfillment_date"`
 	QuantityReceived int               `json:"quantity_received"`
 }

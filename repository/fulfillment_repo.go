@@ -6,7 +6,7 @@ var maxFulfillmentPage int
 
 const fulfillmentPageDataLimit = 1000
 
-func GetFulfillmentHistory(page int) []models.FulfillmentHistory {
+func GetFulfillmentHistory(page int) []models.FullfillmentHistory {
 	maxCount := len(fulfillment_history)
 	pageStart := fulfillmentPageDataLimit * (page - 1)
 	pageEnd := pageStart + fulfillmentPageDataLimit
